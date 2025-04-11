@@ -4,7 +4,8 @@ Main idea of this project is to eliminate need for using gotoxy function, make i
 #### Example Pictures:
 ![warning-prompt](./warning-prompt-example.png)
 ![selection-prompt](./selection-prompt-example.png)
-![usage-gif-and-input-prompt](./input-prompt-example.gif)
+![selection-prompt](./input-prompt-example.png)
+![usage-gif-and-input-prompt](./working-example.gif)
 
 #### Usage
 
