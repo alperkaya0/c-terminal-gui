@@ -1,6 +1,6 @@
 # c-terminal-gui
-Main.c provides an example way to use my library. Please ⭐ star it if you found it useful! You can hide cursor(blinking underscore) too!<br>
-Main idea of this project is to eliminate need for using gotoxy function, make it easier to use simple and beautiful GUI inside terminal and allow developers to focus on main thing they are developing.
+Main.c provides an example way to use my library. Please ⭐ star it if you found it useful!<br>
+Main idea of this project is to eliminate need for using gotoxy function, make it easier to use simple and beautiful GUI inside terminal and allow developers to focus on main thing they are developing.You can hide cursor(blinking underscore) too!
 #### Example Pictures:
 ![warning-prompt](./warning-prompt-example.png)
 ![selection-prompt](./selection-prompt-example.png)
