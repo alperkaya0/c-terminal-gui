@@ -54,7 +54,7 @@ WaitUntilEnterPressed();
 ##### HideCursor
 
 Calling this function hides the blinking underscore so that updates of the cursor position won't annoy the user.(since we use gotoxy, it is unavoidable to not change cursor position.)<br>
-Use it before every other functions once.
+Use it on top of your main function. Use it only once.
 
 ```C
 HideCursor();
