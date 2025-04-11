@@ -44,6 +44,7 @@ void WarningPrompt(char text[], int length) {
     horizontalLine[horizontalLineLength] = '\0';
     //
 
+    char onlyOptionText[] = " Okay ";
     COORD dimensions = GetConsoleDimensions();
     int halfOfHorizontalLength = dimensions.Y / 2;
     int halfOfTextLength = horizontalLineLength/2;
@@ -62,9 +63,9 @@ void WarningPrompt(char text[], int length) {
     printf(text);
 
     // Print Okay button
-    gotoxy(halfOfHorizontalLength - halfOfTextLength + horizontalLineLength/2 - strlen("Okay")/2, halfOfVerticalLength + 1);
+    gotoxy(halfOfHorizontalLength - halfOfTextLength + horizontalLineLength/2 - strlen(onlyOptionText)/2, halfOfVerticalLength + 1);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_GREEN);
-    printf("Okay");
+    printf(onlyOptionText);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_DEFAULT);
 
     // Fill vertical bars
