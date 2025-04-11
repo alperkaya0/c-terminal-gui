@@ -8,6 +8,8 @@
 #define ARROW_KEYS_PREFIX 224
 #define UPPER_ARROW_KEY_SUFFIX 72
 #define LOWER_ARROW_KEY_SUFFIX 80
+#define BACKSPACE_KEY 8
+
 
 int _getch();
 
@@ -77,16 +79,7 @@ void WarningPrompt(char text[], int length) {
     }
 
     // Wait until enter is pressed.
-    int ch;
-    do {
-        ch = _getch();
-
-        if (ch == ENTER_KEY) {
-            clrscr();
-            gotoxy(0, 0);
-            break;
-        }
-    } while( 1 );
+    WaitUntilEnterPressed();
 }
 
 int SelectionPrompt(char selectionArray[][500], int length) {
@@ -171,6 +164,103 @@ int SelectionPrompt(char selectionArray[][500], int length) {
 
     // Encountered an error
     return -1;
+}
+
+char* InputPrompt() {
+    clrscr();
+    int inputLength = 0;
+
+    char* input = malloc(500);
+    COORD dimensions = GetConsoleDimensions();
+    int halfOfHorizontalLength = dimensions.Y / 2;
+    int halfOfVerticalLength = dimensions.X / 2;
+
+    // Create a horizontal line string
+    int horizontalLineLength = halfOfHorizontalLength + 20;
+    char* horizontalLine = malloc(horizontalLineLength);
+    for (int i = 0; i < horizontalLineLength; ++i) {
+        horizontalLine[i] = '-';
+    }
+    horizontalLine[horizontalLineLength] = '\0';
+    //
+
+    int halfOfTextLength = horizontalLineLength/2;
+
+    char onlyOptionText[] = " Enter Input ";
+
+    // Print first horizontal line
+    gotoxy(halfOfHorizontalLength - horizontalLineLength/2, halfOfVerticalLength - 4);
+    printf(horizontalLine);
+
+    // Print second horizontal line
+    gotoxy(halfOfHorizontalLength - horizontalLineLength/2, halfOfVerticalLength + 3);
+    printf(horizontalLine);
+
+    // Print Okay button
+    gotoxy(halfOfHorizontalLength - halfOfTextLength + horizontalLineLength/2 - strlen(onlyOptionText)/2, halfOfVerticalLength + 1);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_GREEN);
+    printf(onlyOptionText);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_DEFAULT);
+
+    // Fill vertical bars
+    for (int i = 0; i < 8; ++i) {
+        gotoxy(halfOfHorizontalLength - halfOfTextLength - 1, halfOfVerticalLength + i - 4);
+        printf("|");
+        gotoxy(halfOfHorizontalLength + halfOfTextLength, halfOfVerticalLength + i - 4);
+        printf("|");
+    }
+
+    // find out horizontal size of prompt box
+    char* cleanerText = malloc(halfOfTextLength * 2 + 1);
+    for (int i = 0; i < halfOfTextLength * 2; ++i) {
+        cleanerText[i] = ' ';
+    }
+    cleanerText[halfOfTextLength * 2 + 1] = '\0';
+    //
+
+    int ch;
+    do {
+        ch = _getch();
+
+        if (ch == ENTER_KEY) {
+            clrscr();
+            gotoxy(0, 0);
+            return input;
+        }
+
+        if (ch == BACKSPACE_KEY) {
+            // remove the right most character
+            int indexToChange = inputLength - 1 < 0 ? 0 : inputLength - 1;
+            input[indexToChange] = '\0';
+            // since we removed a char, length will be decreased by one
+            inputLength = inputLength - 1 < 0 ? 0 : inputLength - 1;
+            gotoxy(halfOfHorizontalLength - halfOfTextLength, halfOfVerticalLength - 2);
+            printf(cleanerText);
+        } else {
+            input[inputLength] = (char)ch;
+            input[inputLength + 1] = '\0';
+            inputLength = inputLength + 1;
+        }
+
+        // Print text
+        gotoxy(halfOfHorizontalLength - halfOfTextLength + horizontalLineLength/2 - inputLength/2, halfOfVerticalLength - 2);
+        printf(input);
+    } while( 1 );
+
+    return "error";
+}
+
+void WaitUntilEnterPressed() {
+    int ch;
+    do {
+        ch = _getch();
+
+        if (ch == ENTER_KEY) {
+            clrscr();
+            gotoxy(0, 0);
+            break;
+        }
+    } while( 1 );
 }
 
 #if AI

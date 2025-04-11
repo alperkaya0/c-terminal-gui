@@ -11,7 +11,11 @@ int main()
 
     int counter = SelectionPrompt(exampleStrings, sizeof(exampleStrings)/sizeof(exampleStrings[0]));
 
-    printf("You selected this:%s!\n", exampleStrings[counter]);
+    printf("You selected this:%s!\nPress Enter to Continue...\n", exampleStrings[counter]);
+
+    WaitUntilEnterPressed();
+
+    printf("You entered this input: %s", InputPrompt());
 
     return 0;
 }
