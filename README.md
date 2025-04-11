@@ -19,6 +19,6 @@ After user selects an option, SelectionPrompt will return the index number of th
 
 Second argument of the SelectionPrompt must be row length of the two dimensional char array you are passing to the function. This is because when you don't limit the row length of a two dimensional array, C cannot know the length of that array AFTER you pass it down to a function.
 
-##### Warming Prompt
+##### Warning Prompt
 
 First argument takes an char array(string) and second argument takes the length of it. You can see main.c for usage example. This function returns nothing. It warns user with the text provided and automatically renders at the center of the terminal and handles the box size accordingly. It closes when user presses the ENTER key.
