@@ -4,6 +4,7 @@ Main idea of this project is to eliminate need for using gotoxy function, make i
 #### Example Pictures:
 ![warning-prompt](./warning-prompt-example.png)
 ![selection-prompt](./selection-prompt-example.png)
+![usage-gif-and-input-prompt](./input-prompt-example.gif)
 
 #### Usage
 
@@ -18,3 +19,11 @@ Second argument of the SelectionPrompt must be row length of the two dimensional
 ##### Warning Prompt
 
 First argument takes an char array(string) and second argument takes the length of it. You can see main.c for usage example. This function returns nothing. It warns user with the text provided and automatically renders at the center of the terminal and handles the box size accordingly. It closes when user presses the ENTER key.
+
+##### Input Prompt
+
+Has no arguments and returns a char pointer(string). It allows users to enter input with a prompt box. Usage is extremely easy, only 1 function.
+
+##### WaitUntilEnterPressed
+
+Blocking function to wait until user presses the enter key. It is useful to wait and ensure that user reads your data before a prompt cleans the screen.
