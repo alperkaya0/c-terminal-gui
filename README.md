@@ -27,3 +27,7 @@ Has no arguments and returns a char pointer(string). It allows users to enter in
 ##### WaitUntilEnterPressed
 
 Blocking function to wait until user presses the enter key. It is useful to wait and ensure that user reads your data before a prompt cleans the screen.
+
+##### HideCursor
+
+Calling this function hides the blinking underscore so that updates of the cursor position won't annoy the user.(since we use gotoxy, it is unavoidable to not change cursor position.)

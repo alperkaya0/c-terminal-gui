@@ -35,6 +35,16 @@ COORD GetConsoleDimensions() {
     return result;
 }
 
+void HideCursor() {
+    HANDLE hStdOut = NULL;
+    CONSOLE_CURSOR_INFO curInfo;
+
+    hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleCursorInfo(hStdOut, &curInfo);
+    curInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(hStdOut, &curInfo);
+}
+
 void WarningPrompt(char text[], int length) {
     clrscr();
     // Create a horizontal line string

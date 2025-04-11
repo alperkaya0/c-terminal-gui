@@ -2,6 +2,8 @@
 
 int main()
 {
+    HideCursor();
+
     char helloString[] = "You are warned for a reason we don't know for now!";
 
     WarningPrompt(helloString, sizeof(helloString));
