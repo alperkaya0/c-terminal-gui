@@ -215,7 +215,7 @@ char* InputPrompt() {
     for (int i = 0; i < halfOfTextLength * 2; ++i) {
         cleanerText[i] = ' ';
     }
-    cleanerText[halfOfTextLength * 2 + 1] = '\0';
+    cleanerText[halfOfTextLength * 2] = '\0';
     //
 
     int ch;
