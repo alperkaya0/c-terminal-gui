@@ -271,7 +271,7 @@ void WaitUntilEnterPressed() {
             break;
         }
     } while( 1 );
-}
+} 
 
 #if AI
 // kill yourself
