@@ -1,5 +1,5 @@
 #include <windows.h>
- 
+
 extern int _getch();
 extern void clrscr();
 extern void gotoxy(int x, int y);
