@@ -10,7 +10,7 @@
 #define LOWER_ARROW_KEY_SUFFIX 80
 #define BACKSPACE_KEY 8
 
-   
+    
 int _getch();
 
 void clrscr() {
