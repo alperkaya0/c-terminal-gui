@@ -12,7 +12,7 @@
 
     
 int _getch();
-
+ 
 void clrscr() {
     system("cls");
 }
